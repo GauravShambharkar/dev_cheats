@@ -23,7 +23,8 @@ jobs:
 
       - name: Set lower case repo name
         run: |
-          echo "IMAGE_ID=ghcr.io/${{ github.repository_owner }}/devcheats" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
+          IMAGE_PATH=$(echo "ghcr.io/${{ github.repository_owner }}/devcheats" | tr '[:upper:]' '[:lower:]')
+          echo "IMAGE_ID=$IMAGE_PATH" >> $GITHUB_ENV
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
