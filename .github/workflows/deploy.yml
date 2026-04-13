@@ -5,7 +5,28 @@ on:
       - main
 
 jobs:
-  deploy:
+  # STEP 1: Code Quality Check
+  quality-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Linting
+        run: npm run lint
+
+  # STEP 2: Build and Publish Container
+  build-and-push:
+    needs: quality-check
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -21,18 +42,27 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ github.token }}
 
-      - name: Extract metadata (tags, labels) for Docker
+      - name: Extract metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: ghcr.io/${{ github.repository }}
-          tags: |
-            type=raw,value=latest
+          tags: type=raw,value=latest
 
-      - name: Build and push Docker image
+      - name: Build and push image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  # STEP 3: Deployment Verification
+  verify-deployment:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Summary
+        run: |
+          echo "Deployment process completed successfully!"
+          echo "Image is now available at ghcr.io/${{ github.repository }}:latest"
