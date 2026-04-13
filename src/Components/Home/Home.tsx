@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const quickStartSnippet = [
-    '// src/main.tsx',
+    "// src/main.tsx",
     'import { Provider } from "react-redux";',
     'import { store } from "./store/store";',
     'import App from "./App";',
@@ -19,22 +19,26 @@ const Home = () => {
   const features = [
     {
       title: "Step-by-step flows",
-      description: "Every topic is broken into tiny, skippable steps you can execute in minutes.",
+      description:
+        "Every topic is broken into tiny, skippable steps you can execute in minutes.",
       icon: <BookOpenCheck className="text-amber-400" size={20} />,
     },
     {
       title: "Real code, ready to paste",
-      description: "Copy-tested snippets through the CodeBlock component to avoid context switching.",
+      description:
+        "Copy-tested snippets through the CodeBlock component to avoid context switching.",
       icon: <Sparkles className="text-emerald-400" size={20} />,
     },
     {
       title: "Full-stack coverage",
-      description: "From Redux and Zustand to Multer + Cloudinary, follow both front-end and backend flows.",
+      description:
+        "From Redux and Zustand to Multer + Cloudinary, follow both front-end and backend flows.",
       icon: <Layers className="text-sky-400" size={20} />,
     },
     {
       title: "Best practices baked in",
-      description: "Type safety, folder structures, and devtools-ready setups are included by default.",
+      description:
+        "Type safety, folder structures, and devtools-ready setups are included by default.",
       icon: <ShieldCheck className="text-indigo-300" size={20} />,
     },
   ];
@@ -69,11 +73,9 @@ const Home = () => {
   return (
     <div className="w-full min-h-screen bg-slate-950 text-white overflow-x-hidden">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 py-20 sm:px-6 md:py-28">
-
         {/* Hero */}
         <section className=" gap-10 flex max-[1050px]:flex-col">
           <div className="flex flex-col gap-6 text-center lg:text-left px-2 sm:px-0">
-
             <span className="mx-auto w-fit rounded-full  border-white/20 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-amber-300 lg:mx-0 max-[500px]:text-[10px] max-[500px]:px-3">
               Dev Cheats
             </span>
@@ -84,8 +86,8 @@ const Home = () => {
               </h1>
               <p className="text-base text-slate-300 md:text-lg max-md:text-sm max-[500px]:text-xs">
                 DevCheats is a living playbook for Redux, Zustand, Context API,
-                Multer + Cloudinary, and more. Follow the guided tree, copy the code,
-                and ship production-ready integrations faster.
+                Multer + Cloudinary, and more. Follow the guided tree, copy the
+                code, and ship production-ready integrations faster.
               </p>
             </div>
 
@@ -105,20 +107,34 @@ const Home = () => {
             </div>
 
             <div className="flex flex-wrap justify-center gap-4 text-xs text-slate-400 lg:justify-start max-[500px]:text-[10px]">
-              <span className="rounded-full border border-white/15 px-3 py-1">Typescript-first snippets</span>
-              <span className="rounded-full border border-white/15 px-3 py-1">File tree previews</span>
-              <span className="rounded-full border border-white/15 px-3 py-1">Copy-to-clipboard</span>
+              <span className="rounded-full border border-white/15 px-3 py-1">
+                Typescript-first snippets
+              </span>
+              <span className="rounded-full border border-white/15 px-3 py-1">
+                File tree previews
+              </span>
+              <span className="rounded-full border border-white/15 px-3 py-1">
+                Copy-to-clipboard
+              </span>
             </div>
           </div>
 
           <div className="rounded-3xl  max-[500]:w-100 bg-gradient-to-br from-slate-900 to-slate-800 p-5 max-[350px]:p-2 max-[350px]:text-[11px]">
-            <p className="text-xs uppercase tracking-[0.3em] text-slate-400 max-[500px]:text-[10px]">Quick peek</p>
-            <h3 className="mt-2 text-xl max-[500px]:text-lg font-semibold text-white">Bootstrap Redux Provider</h3>
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400 max-[500px]:text-[10px]">
+              Quick peek
+            </p>
+            <h3 className="mt-2 text-xl max-[500px]:text-lg font-semibold text-white">
+              Bootstrap Redux Provider
+            </h3>
             <p className="text-sm text-slate-400 max-[500px]:text-xs">
               Every guide includes ready-to-paste code with context.
             </p>
             <div className="mt-4 overflow-hidden">
-              <CodeBlock code={quickStartSnippet} fileName="src/main.tsx" language="tsx" />
+              <CodeBlock
+                code={quickStartSnippet}
+                fileName="src/main.tsx"
+                language="tsx"
+              />
             </div>
             <p className="mt-3 text-xs text-slate-500 max-[500px]:text-[10px]">
               Copy & drop into your project. No guesswork.
@@ -137,8 +153,12 @@ const Home = () => {
                 {feature.icon}
               </div>
               <div>
-                <h4 className="text-lg max-[500px]:text-base font-semibold">{feature.title}</h4>
-                <p className="text-sm max-[500px]:text-xs text-slate-400">{feature.description}</p>
+                <h4 className="text-lg max-[500px]:text-base font-semibold">
+                  {feature.title}
+                </h4>
+                <p className="text-sm max-[500px]:text-xs text-slate-400">
+                  {feature.description}
+                </p>
               </div>
             </div>
           ))}
@@ -150,9 +170,12 @@ const Home = () => {
             <p className="text-xs uppercase tracking-[0.3em] text-slate-500 max-[500px]:text-[10px]">
               Guided playbooks
             </p>
-            <h2 className="text-3xl max-[500px]:text-2xl font-semibold">Pick your next implementation</h2>
+            <h2 className="text-3xl max-[500px]:text-2xl font-semibold">
+              Pick your next implementation
+            </h2>
             <p className="text-sm max-[500px]:text-xs text-slate-400">
-              Every topic pairs a visual file tree with annotated steps and the exact code you need.
+              Every topic pairs a visual file tree with annotated steps and the
+              exact code you need.
             </p>
           </div>
 
@@ -164,11 +187,17 @@ const Home = () => {
                 className={`rounded-3xl border border-white/10 bg-gradient-to-br ${topic.color} p-6 max-[500px]:p-4 transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/10`}
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="text-2xl max-[500px]:text-lg font-semibold">{topic.name}</h3>
-                  <span className="text-sm max-[500px]:text-xs font-semibold text-white/80">Dive in →</span>
+                  <h3 className="text-2xl max-[500px]:text-lg font-semibold">
+                    {topic.name}
+                  </h3>
+                  <span className="text-sm max-[500px]:text-xs font-semibold text-white/80">
+                    Dive in →
+                  </span>
                 </div>
 
-                <p className="mt-3 text-sm max-[500px]:text-xs text-white/80">{topic.summary}</p>
+                <p className="mt-3 text-sm max-[500px]:text-xs text-white/80">
+                  {topic.summary}
+                </p>
 
                 <div className="mt-5 flex gap-2 text-xs max-[500px]:text-[10px] text-white/70">
                   <span className="rounded-full border border-white/25 px-3 py-1 max-[500px]:px-2 max-[500px]:py-1">
