@@ -21,9 +21,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ github.token }}
 
+      - name: Set lower case repo name
+        run: |
+          echo "IMAGE_ID=ghcr.io/${{ github.repository_owner }}/devcheats" | tr '[:upper:]' '[:lower:]' >> $GITHUB_ENV
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}:latest
+          tags: ${{ env.IMAGE_ID }}:latest
