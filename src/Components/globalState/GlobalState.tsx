@@ -1,9 +1,8 @@
-import { createContext, type ReactNode } from "react";
-
-export const SideBarNavigationContext = createContext<any>(null);
+import { type ReactNode } from "react";
+import { SideBarNavigationContext, type SideBarNavigation } from "./SideBarNavigationContext";
 
 const SideBarNavProvider = ({ children }: { children: ReactNode }) => {
-  const sideBarNavigation = [
+  const sideBarNavigation: SideBarNavigation = [
     {
       category: "State Management",
       items: [
@@ -33,3 +32,4 @@ const SideBarNavProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export default SideBarNavProvider;
+export { SideBarNavigationContext };

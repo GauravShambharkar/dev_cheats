@@ -2,7 +2,7 @@ import { useContext, useMemo } from "react";
 import { Compass, Layers3, Sparkles } from "lucide-react";
 import SideBar from "./ExploreSideBar/SideBar";
 import ExploreTopics from "./ExploreTopics/ExploreTopics";
-import { SideBarNavigationContext } from "../globalState/GlobalState";
+import { SideBarNavigationContext, type NavCategory } from "../globalState/SideBarNavigationContext";
 
 const Explore = () => {
   const sideBarNavigation = useContext(SideBarNavigationContext) || [];
@@ -10,7 +10,7 @@ const Explore = () => {
   const stats = useMemo(() => {
     const categories = sideBarNavigation.length;
     const topics = sideBarNavigation.reduce(
-      (count: number, group: any) => count + (group.items?.length || 0),
+      (count: number, group: NavCategory) => count + (group.items?.length || 0),
       0
     );
 
@@ -71,7 +71,7 @@ const Explore = () => {
             </div>
           </div>
         </header>
-
+        
         <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {stats.map((stat) => (
             <div

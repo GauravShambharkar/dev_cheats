@@ -1,7 +1,7 @@
 import { useContext, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
-import { SideBarNavigationContext } from "@/Components/globalState/GlobalState";
+import { SideBarNavigationContext, type NavCategory, type NavItem } from "@/Components/globalState/SideBarNavigationContext";
 
 const SideBar = () => {
   const sideBarNavigation = useContext(SideBarNavigationContext) || [];
@@ -13,13 +13,13 @@ const SideBar = () => {
     if (!term) return sideBarNavigation;
 
     return sideBarNavigation
-      .map((group: any) => ({
+      .map((group: NavCategory) => ({
         ...group,
-        items: group.items.filter((item: any) =>
+        items: group.items.filter((item: NavItem) =>
           item.label.toLowerCase().includes(term)
         ),
       }))
-      .filter((group: any) => group.items.length > 0);
+      .filter((group: NavCategory) => group.items.length > 0);
   }, [filter, sideBarNavigation]);
 
   const toggleAccordion = (index: number) => {
@@ -45,7 +45,7 @@ const SideBar = () => {
       </div>
 
       <div className="flex flex-col gap-2">
-        {filteredNavigation.map((group: any, index: number) => (
+        {filteredNavigation.map((group, index: number) => (
           <div
             key={group.category}
             className="rounded-2xl border border-white/10 bg-white/5"
@@ -65,7 +65,7 @@ const SideBar = () => {
             {openIndex === index && (
               <div className="border-t border-white/10 px-2 py-2 text-sm">
                 <div className="flex flex-col gap-1.5">
-                  {group.items.map((item: any) => (
+                  {group.items.map((item) => (
                     <NavLink
                       key={item.id}
                       to={item.href}
